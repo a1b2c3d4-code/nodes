@@ -104,11 +104,11 @@ function update_teneo_script() {
     return 1
   }
 
-  git fetch origin && git reset --hard origin/main
+  git pull --ff-only origin main
   if [ $? -eq 0 ]; then
-    echo "✅ Скрипт Teneo обновлён и все файлы перезаписаны."
+    echo "✅ Скрипт Teneo обновлён (только изменённые файлы)."
   else
-    echo "⚠️  Не удалось обновить репозиторий. Проверьте соединение или конфликты."
+    echo "⚠️  Не удалось выполнить обновление. Возможны локальные изменения или конфликты."
   fi
 
   cd "$SCRIPT_DIR"
